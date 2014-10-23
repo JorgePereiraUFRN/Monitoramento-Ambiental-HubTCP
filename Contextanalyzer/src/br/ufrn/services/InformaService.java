@@ -13,6 +13,7 @@ import context.arch.service.helper.FunctionDescription;
 import context.arch.service.helper.FunctionDescriptions;
 import context.arch.service.helper.ServiceInput;
 import context.arch.widget.Widget;
+
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -138,6 +139,7 @@ public class InformaService extends Service {
                     if (functionName.equals(POLLUTION)) {
                         String context = serviceInput.getInput().getAttributeValue("area");
                        
+ 
                         //Publisher excession
                         Publish p = publishs.get(POLLUTION);
                         if(p != null){
@@ -150,7 +152,11 @@ public class InformaService extends Service {
                    
                     //Will Rain
                     else if (functionName.equals(WILL_RAIN)) {
+                    	
+                    	 
                         String context = serviceInput.getInput().getAttributeValue("area");
+                        
+                       
                        
                         //Publisher excession
                         Publish p = publishs.get(WILL_RAIN);
@@ -178,7 +184,7 @@ public class InformaService extends Service {
                     //Noise
                     else if (functionName.equals(NOISE)) {
                         String context = serviceInput.getInput().getAttributeValue("area");
-                        
+
                         //Publisher excession
                         Publish p = publishs.get(NOISE);
                         if(p != null){

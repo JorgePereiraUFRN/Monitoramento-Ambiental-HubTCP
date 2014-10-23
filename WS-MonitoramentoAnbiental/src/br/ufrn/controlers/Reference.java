@@ -17,21 +17,32 @@ import java.util.logging.Logger;
  */
 public class Reference {
 
-    public AtualizarWidgetsRMI getReference(String url) {
+	private static AtualizarWidgetsRMI atualizarWidgetsRMI = null;
 
-        AtualizarWidgetsRMI atualizarWidgetsRMI;
-        try {
-            atualizarWidgetsRMI = (AtualizarWidgetsRMI) Naming.lookup(url);
-            System.out.println("Referencia recuperada");
-            return atualizarWidgetsRMI;
-        } catch (NotBoundException ex) {
-            Logger.getLogger(Reference.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Reference.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (RemoteException ex) {
-            Logger.getLogger(Reference.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+	private Reference() {
 
-    }
+	}
+
+	public static synchronized AtualizarWidgetsRMI getReference(String url) {
+
+		if (atualizarWidgetsRMI == null) {
+
+			try {
+				atualizarWidgetsRMI = (AtualizarWidgetsRMI) Naming.lookup(url);
+				System.out.println("Referencia recuperada");
+
+			} catch (NotBoundException ex) {
+				Logger.getLogger(Reference.class.getName()).log(Level.SEVERE,
+						null, ex);
+			} catch (MalformedURLException ex) {
+				Logger.getLogger(Reference.class.getName()).log(Level.SEVERE,
+						null, ex);
+			} catch (RemoteException ex) {
+				Logger.getLogger(Reference.class.getName()).log(Level.SEVERE,
+						null, ex);
+			}
+		}
+		return atualizarWidgetsRMI;
+
+	}
 }

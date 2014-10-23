@@ -8,7 +8,7 @@ package comunicacaoassincrona;
  *
  * @author jorge
  */
-public class HubTCP {
+public class Main {
 
     /**
      * @param args the command line arguments

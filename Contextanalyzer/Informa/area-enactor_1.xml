@@ -114,8 +114,8 @@
 		</ServiceInput>
         </Reference> 
         
-        <Reference name="willRain">
-		<Query name="willRain">
+        <Reference name="NowillRain">
+		<Query name="NowillRain">
 			(ELSE
 				(QUERY willRain)
 			)

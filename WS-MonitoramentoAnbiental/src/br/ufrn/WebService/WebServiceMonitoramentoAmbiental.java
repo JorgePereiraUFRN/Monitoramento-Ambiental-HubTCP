@@ -32,7 +32,7 @@ public class WebServiceMonitoramentoAmbiental {
 //    
 //    private MonitorCidade monitorCidade = MonitorCidade.getInstance();
 
-    private AtualizarWidgetsRMI atualizarWidgets = new Reference().getReference("rmi://localhost:1029/Monitoramento");
+    private AtualizarWidgetsRMI atualizarWidgets = Reference.getReference("rmi://localhost:1029/Monitoramento");
     /**
      * Creates a new instance of WebServiceMonitoramentoAmbiental
      */

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package monitoramentoambiental.rmi;
+package ContextAnalyzer;
 
 import br.ufrn.controlers.InstanciaWidget;
 
@@ -10,7 +10,7 @@ import br.ufrn.controlers.InstanciaWidget;
  *
  * @author Jorge
  */
-public class MonitoramentoAmbientalRMI {
+public class Main {
 
     /**
      * @param args the command line arguments

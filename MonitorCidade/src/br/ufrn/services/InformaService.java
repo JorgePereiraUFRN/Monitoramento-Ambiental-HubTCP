@@ -36,6 +36,7 @@ public class InformaService {
         new subscriberACID_RAIN(ACID_RAIN).subscribe();
         new subscriberBEAUTIFUL_WEATHER(BEAUTIFUL_WEATHER).subscribe();
         new subscriberTRASH(TRASH).subscribe();
+        new SubscriberWILL_RAIN(WILL_RAIN).subscribe();
     }
 
     private class SubscriberPOLLUTION extends Subscriber {
@@ -106,6 +107,8 @@ public class InformaService {
         public void tratarMensagem(String mensagem) {
             String valoresP[] = mensagem.split(";");
 
+            System.out.println("indice de ruidos "+valoresP[2]+ Integer.parseInt(valoresP[3]));
+            
             if (valoresP[2].equals("NOISE_ON")) {
                 cidade.atualizaQuantidadeRuido(Integer.parseInt(valoresP[0]), valoresP[2], Integer.parseInt(valoresP[3]));
             } else if (valoresP[2].equals("NOISE_OFF")) {

@@ -10,7 +10,7 @@ import br.ufrn.services.InformaService;
  *
  * @author Jorge
  */
-public class MonitorCidade {
+public class Main {
 
     /**
      * @param args the command line arguments
