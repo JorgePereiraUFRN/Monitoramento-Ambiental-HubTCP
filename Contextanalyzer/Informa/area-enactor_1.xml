@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="areaEnactor_1">
+
+	<InWidget  href="area-widget-input_1.xml" />
+	<OutWidget href="informa-widget-output.xml" />
+	
+	<OutcomeName>area</OutcomeName>
+	
+        
+        
+	<!--
+            ================POLLUTION===================
+	-->
+        
+        
+        
+	<Reference name="PollutionBoa">
+		<Query name="PollutionBoa">
+			(AND
+				(GREATER_EQUAL indexPollution 0)
+				(LESS indexPollution 24)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"pollutionMonitor;"+"BOA"</Outcome>
+		<ServiceInput service="informaService" function="pollutionMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+	
+	<Reference name="pollutionRegular">
+		<Query name="pollutionRegular">
+			(AND
+				(GREATER indexPollution 25)
+				(LESS indexPollution 49)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"pollutionMonitor;"+"REGULAR"</Outcome>
+		<ServiceInput service="informaService" function="pollutionMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+	
+	<Reference name="pollutionInadequada">
+		<Query name="pollutionInadequada">
+			(AND
+				(GREATER indexPollution 50)
+				(LESS indexPollution 74)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"pollutionMonitor;"+"INADEQUADA"</Outcome>
+		<ServiceInput service="informaService" function="pollutionMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+	
+	<Reference name="pollutionMa">
+		<Query name="pollutionMa">
+			(AND
+				(GREATER indexPollution 75)
+				(LESS indexPollution 100)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"pollutionMonitor;"+"MA"</Outcome>
+		<ServiceInput service="informaService" function="pollutionMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+	
+	<Reference name="pollutionPessima">
+		<Query name="pollutionPessima">
+			(
+                            GREATER indexPollution 100
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"pollutionMonitor;"+"PESSIMA"</Outcome>
+		<ServiceInput service="informaService" function="pollutionMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference> 
+	
+	<Reference name="trafficFlowOn">
+		<Query name="trafficFlowOn">
+			(AND
+				(GREATER vehicleFlow 60)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"pollutionMonitor;"+"TRAFEGO_ON"</Outcome>
+		<ServiceInput service="informaService" function="pollutionMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference> 
+        
+        <Reference name="trafficFlowOff">
+		<Query name="trafficFlowOff">
+			(ELSE
+				(QUERY trafficFlowOn)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"pollutionMonitor;"+"TRAFEGO_OFF"</Outcome>
+		<ServiceInput service="informaService" function="pollutionMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference> 
+	
+        <Reference name="willRain">
+		<Query name="willRain">
+			(
+                            GREATER willRain 80
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"willRainMonitor;"+"RAIN_ON"</Outcome>
+		<ServiceInput service="informaService" function="willRainMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+        </Reference> 
+        
+        <Reference name="willRain">
+		<Query name="willRain">
+			(ELSE
+				(QUERY willRain)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"willRainMonitor;"+"RAIN_OFF"</Outcome>
+		<ServiceInput service="informaService" function="willRainMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+        </Reference> 
+
+	<Reference name="acidRainHere">
+		<Query name="acidRainHere">
+			(AND
+				(GREATER indexPollution 100)
+				(LESS windSpeed 20)
+				(GREATER willRain 75)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"acidRainMonitor;"+"AQUI"</Outcome>
+		<ServiceInput service="informaService" function="acidRainMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference> 
+        
+	<Reference name="acidRainOther">
+		<Query name="acidRainOther">
+			(AND
+				(GREATER indexPollution 100)
+				(GREATER windSpeed 30)
+				(GREATER willRain 75)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"acidRainMonitor;"+"OUTRO;"+directionWind</Outcome>
+		<ServiceInput service="informaService" function="acidRainMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference> 
+        
+        <Reference name="acidRainNone">
+		<Query name="acidRainNone">
+                        (ELSE   (OR
+                                    (QUERY acidRainHere)
+                                    (QUERY acidRainOther)
+			)       )
+		</Query>
+		<Outcome outAttribute="area">area+";"+"acidRainMonitor;"+"ACID_OFF"</Outcome>
+		<ServiceInput service="informaService" function="acidRainMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference> 
+	
+	<Reference name="noiseOn">
+		<Query name="noiseOn">
+			(
+				GREATER noise 55
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"noiseMonitor;"+"NOISE_ON;"+noise</Outcome>
+		<ServiceInput service="informaService" function="noiseMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference> 
+        
+        <Reference name="noiseOff">
+		<Query name="noiseOff">
+			(ELSE
+				(QUERY noiseOn)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"noiseMonitor;"+"NOISE_OFF;"+noise</Outcome>
+		<ServiceInput service="informaService" function="noiseMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference> 
+        
+        
+        
+        <!--
+            ================TEMPERATURE===================
+	-->
+        
+        
+        
+          <Reference name="area">
+		<Query name="area">
+			(
+                            GREATER temperature -274
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"temperatureMonitor;"+temperature</Outcome>
+		<ServiceInput service="informaService" function="temperatureMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+	
+	<Reference name="beautifulWeatherOn">
+		<Query name="beautifulWeatherOn">
+			(AND
+                            (LESS indexPollution 50)
+                            (GREATER temperature 15)
+                            (LESS temperature 28)
+                            (GREATER humidity 65)
+                            (GREATER windSpeed 12)
+                            (GREATER windSpeed 20)
+                            (LESS willRain 50)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"beautifulWeatherMonitor;"+"BEAUTIFUL_ON"</Outcome>
+		<ServiceInput service="informaService" function="beautifulWeatherMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+        
+        <Reference name="beautifulWeatherOff">
+		<Query name="beautifulWeatherOff">
+			(ELSE
+                            (QUERY beautifulWeatherOn)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"beautifulWeatherMonitor;"+"BEAUTIFUL_OFF"</Outcome>
+		<ServiceInput service="informaService" function="beautifulWeatherMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+	
+	<Reference name="fireOn">
+		<Query name="fireOn">
+			(
+				EQUAL isFire 1
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"isFireMonitor;"+"FIRE_ON"</Outcome>
+		<ServiceInput service="informaService" function="isFireMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+        
+        <Reference name="fireOff">
+		<Query name="fireOff">
+			(ELSE
+				(QUERY fireOn)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"isFireMonitor;"+"FIRE_OFF"</Outcome>
+		<ServiceInput service="informaService" function="isFireMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+		
+	<Reference name="hotDryOn">
+		<Query name="hotDryOn">
+			(AND
+				(GREATER temperature 33)
+				(LESS humidity 25)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"hotDryMonitor;"+"HOTDRY_ON"</Outcome>
+		<ServiceInput service="informaService" function="hotDryMonitor">
+			<Attribute name="area"/>
+		</ServiceInput>
+	</Reference>
+        
+        <Reference name="hotDryOff">
+		<Query name="hotDryOff">
+			(ELSE
+				(QUERY hotDryOn)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"hotDryMonitor;"+"HOTDRY_OFF"</Outcome>
+		<ServiceInput service="informaService" function="hotDryMonitor">
+			<Attribute name="area"/>
+		</ServiceInput>
+	</Reference>
+        
+        
+        
+        <!--
+            ================DUMP===================
+	-->
+        
+        
+        
+        <Reference name="empty">
+		<Query name="empty">
+			(
+                            EQUAL content 0
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"trashMonitor;"+"VAZIA"</Outcome>
+		<ServiceInput service="informaService" function="trashMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+	
+	<Reference name="filling">
+		<Query name="filling">
+			(AND
+				(GREATER content 0)
+				(LESS content 224)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"trashMonitor;"+"ENCHENDO"</Outcome>
+		<ServiceInput service="informaService" function="trashMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+	
+        <Reference name="flood">
+		<Query name="flood">
+			(
+                            EQUAL content 250
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"trashMonitor;"+"CHEIA"</Outcome>
+		<ServiceInput service="informaService" function="trashMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+        
+	<Reference name="limit">
+		<Query name="limit">
+			(AND
+                            (GREATER_EQUAL content 225)
+                            (LESS content 250)
+                            (GREATER agentDistance 0)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"trashGathering;"+"LIMITE;"+agentNearName+";"+agentDistance</Outcome>
+		<ServiceInput service="informaService" function="trashGathering">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+        
+       	<Reference name="gatheringOn">
+		<Query name="gatheringOn">
+			(
+                            EQUAL agentDistance 0
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"trashGathering;"+"GATHERING_ON;"+agentNearName</Outcome>
+		<ServiceInput service="informaService" function="trashGathering">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+        
+        <Reference name="gatheringOff">
+		<Query name="gatheringOff">
+			(ELSE   (OR
+                                    (QUERY limit)
+                                    (QUERY gatheringOn)
+			)       )
+		</Query>
+		<Outcome outAttribute="area">area+";"+"trashGathering;"+"GATHERING_OFF"</Outcome>
+		<ServiceInput service="informaService" function="trashGathering">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+        
+        
+</Enactor>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="libs/commons-lang-2.5.jar"/>
+	<classpathentry kind="lib" path="libs/contexttoolkit2.0.jar"/>
+	<classpathentry kind="lib" path="libs/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="libs/hibernate-jpa-2.0-api-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="libs/hibernate3.jar"/>
+	<classpathentry kind="lib" path="libs/jahmm-0.6.1.jar"/>
+	<classpathentry kind="lib" path="libs/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="libs/jdom.jar"/>
+	<classpathentry kind="lib" path="libs/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="libs/mysql-connector-java-3.1.12-bin.jar"/>
+	<classpathentry kind="lib" path="libs/ntp.jar"/>
+	<classpathentry kind="lib" path="libs/slf4j-api-1.6.0.jar"/>
+	<classpathentry kind="lib" path="libs/slf4j-log4j12-1.6.0.jar"/>
+	<classpathentry kind="lib" path="libs/weka.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
