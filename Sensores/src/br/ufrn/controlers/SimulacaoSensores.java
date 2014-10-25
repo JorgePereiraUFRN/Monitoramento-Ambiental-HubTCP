@@ -35,14 +35,14 @@ public class SimulacaoSensores {
 		atualizar.atualizarIncidenciaDeIncendio(1, 1);
 		long hora = servidorHoras.getHora();
 
-		//System.out.println("Teste 1 - Sensor - hora: " + hora);
+		System.out.println("Teste 1 - Sensor - hora: " + hora);
 
 	}
 
 	public void enviarDado(int op) {
 
 		Random r = new Random();
-		int area = r.nextInt(5);
+		int area = r.nextInt(4);
 		switch (op) {
 		case 1:
 			atualizar.atualizarAgenteProximo(area, "agente" + area);
@@ -125,15 +125,24 @@ public class SimulacaoSensores {
 		}
 		
 		
-		
-		
 
 	}
 
 	public void teste3() throws RemoteException {
 		ExecutorService executor = Executors.newCachedThreadPool();
 
-		for (int i = 0; i < 300; i++) {
+		long inicio = System.currentTimeMillis();
+		
+		for (int i = 0; i < 1005; i++) {
+			
+			if(i % 100 == 0){
+				try {
+					Thread.sleep(1000 * 3);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 
 			executor.execute(new Runnable() {
 
@@ -145,11 +154,12 @@ public class SimulacaoSensores {
 				}
 			});
 		}
+		
 
 		atualizar.atualizarIncidenciaDeIncendio(1, 1);
 		long hora = servidorHoras.getHora();
 
-		//System.out.println("Teste 3 - Sensor - hora: " + hora);
+		System.out.println("hora teste 3 - Sensor :"+hora);
 
 	}
 
