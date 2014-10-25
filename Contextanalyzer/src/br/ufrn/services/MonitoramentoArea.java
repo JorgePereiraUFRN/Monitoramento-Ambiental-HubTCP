@@ -98,7 +98,7 @@ public class MonitoramentoArea implements AtualizarWidgetsRMI {
     @Override
     public void atualizarIncidenciaDeIncendio(Integer area, Integer isFire) {
         areaIN.updateData("isFire", isFire);
-        System.out.println("======== atualizando fogo =======");
+        //System.out.println("======== atualizando fogo =======");
     }
 
     @Override

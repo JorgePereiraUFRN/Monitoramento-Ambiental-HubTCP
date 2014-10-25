@@ -35,7 +35,7 @@ public class subscriberComand extends TratarRequisicao {
                     String topico = mensagem.getValorMensagem();
                     if (subscribers.get(topico) != null) {
                         subscribers.get(topico).put(socket.getInetAddress().getHostAddress() + ":" + socket.getPort(), socket);
-                        System.out.println("inserindo subscriber " + socket.getInetAddress().getHostAddress() + ":" + socket.getPort());
+                        //System.out.println("inserindo subscriber " + socket.getInetAddress().getHostAddress() + ":" + socket.getPort());
                     }
                 }
             }

@@ -23,47 +23,51 @@ import mensagem.Mensagem;
  */
 public class PublishComand extends TratarRequisicao {
 
-    public PublishComand(Map<String, Map<String, Socket>> subscribers, Socket socket) {
-        super(subscribers, socket);
-    }
+	public PublishComand(Map<String, Map<String, Socket>> subscribers,
+			Socket socket) {
+		super(subscribers, socket);
+	}
 
-   
-    @Override
-    public void run() {
-        try {
-            for (;;) {
-                System.out.println("publicando");
-                input = new ObjectInputStream(socket.getInputStream());
+	@Override
+	public void run() {
+		try {
+			for (;;) {
 
-                Mensagem mensagem = (Mensagem) input.readObject();
-                if (mensagem.getCodigo().equals(Mensagem.publish)) {
-                    System.out.println(mensagem.getValorMensagem());
-                    String[] v = mensagem.getValorMensagem().split("%");
+				input = new ObjectInputStream(socket.getInputStream());
 
-                    enviarAtualizacao(subscribers.get(v[0]).values().iterator(), v[1]);
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(PublishComand.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(PublishComand.class.getName()).log(Level.SEVERE, null, ex);
-        }
+				Mensagem mensagem = (Mensagem) input.readObject();
+				if (mensagem.getCodigo().equals(Mensagem.publish)) {
 
-    }
+					String[] v = mensagem.getValorMensagem().split("%");
 
-    private void enviarAtualizacao(Iterator<Socket> sockets, String atualizacao) {
+					enviarAtualizacao(
+							subscribers.get(v[0]).values().iterator(), v[1]);
+				}
+			}
+		} catch (ClassNotFoundException ex) {
+			Logger.getLogger(PublishComand.class.getName()).log(Level.SEVERE,
+					null, ex);
+		} catch (IOException ex) {
+			Logger.getLogger(PublishComand.class.getName()).log(Level.SEVERE,
+					null, ex);
+		}
 
-        while (sockets.hasNext()) {
-            ObjectOutputStream output = null;
-            try {
-                Socket s = sockets.next();
-                output = new ObjectOutputStream(s.getOutputStream());
-                System.out.println("notificando subscriber " + s.getInetAddress().getHostAddress() + ":" + s.getPort());
-                output.writeObject(atualizacao);
-            } catch (IOException ex) {
-                Logger.getLogger(PublishComand.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+	}
 
-    }
+	private void enviarAtualizacao(Iterator<Socket> sockets, String atualizacao) {
+
+		while (sockets.hasNext()) {
+			ObjectOutputStream output = null;
+			try {
+				Socket s = sockets.next();
+				output = new ObjectOutputStream(s.getOutputStream());
+
+				output.writeObject(atualizacao);
+			} catch (IOException ex) {
+				Logger.getLogger(PublishComand.class.getName()).log(
+						Level.SEVERE, null, ex);
+			}
+		}
+
+	}
 }

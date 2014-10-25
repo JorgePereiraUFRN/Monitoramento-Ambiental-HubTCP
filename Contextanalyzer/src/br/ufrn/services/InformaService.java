@@ -129,7 +129,7 @@ public class InformaService extends Service {
              public DataObject execute(ServiceInput serviceInput) {
                     
                    String functionName = serviceInput.getFunctionName(); 
-                   System.out.println("função "+functionName+"\n");
+                   //System.out.println("função "+functionName+"\n");
                     
                     /**
                      *POLLUTION FUNCTIONS
@@ -145,7 +145,7 @@ public class InformaService extends Service {
                         if(p != null){
                             p.publicar(context);
                         }else{
-                            System.out.println("não existe publish associado a "+POLLUTION);
+                            //System.out.println("não existe publish associado a "+POLLUTION);
                         }
                             
                     }   
@@ -163,7 +163,7 @@ public class InformaService extends Service {
                         if(p != null){
                             p.publicar(context);
                         }else{
-                            System.out.println("não existe publish associado a "+WILL_RAIN);
+                            //System.out.println("não existe publish associado a "+WILL_RAIN);
                         }
                         
                     }
@@ -177,7 +177,7 @@ public class InformaService extends Service {
                         if(p != null){
                             p.publicar(context);
                         }else{
-                            System.out.println("não existe publish associado a "+ACID_RAIN);
+                            //System.out.println("não existe publish associado a "+ACID_RAIN);
                         }
                     }
                     
@@ -190,7 +190,7 @@ public class InformaService extends Service {
                         if(p != null){
                             p.publicar(context);
                         }else{
-                            System.out.println("não existe publish associado a "+NOISE);
+                            //System.out.println("não existe publish associado a "+NOISE);
                         }
                     }
                     
@@ -206,7 +206,7 @@ public class InformaService extends Service {
                         if(p != null){
                             p.publicar(context);
                         }else{
-                            System.out.println("não existe publish associado a "+TEMPERATURE);
+                            //System.out.println("não existe publish associado a "+TEMPERATURE);
                         }
                     }
                     
@@ -219,7 +219,7 @@ public class InformaService extends Service {
                         if(p != null){
                             p.publicar(context);
                         }else{
-                            System.out.println("não existe publish associado a "+BEAUTIFUL_WEATHER);
+                            //System.out.println("não existe publish associado a "+BEAUTIFUL_WEATHER);
                         }
                         
                     }
@@ -233,7 +233,7 @@ public class InformaService extends Service {
                         if(p != null){
                             p.publicar(context);
                         }else{
-                            System.out.println("não existe publish associado a "+IS_FIRE);
+                            //System.out.println("não existe publish associado a "+IS_FIRE);
                         }
                     }
                     
@@ -246,7 +246,7 @@ public class InformaService extends Service {
                         if(p != null){
                             p.publicar(context);
                         }else{
-                            System.out.println("não existe publish associado a "+HOT_DRY);
+                            //System.out.println("não existe publish associado a "+HOT_DRY);
                         }
                         
                     }
@@ -265,7 +265,7 @@ public class InformaService extends Service {
                         if(p != null){
                             p.publicar(context);
                         }else{
-                            System.out.println("não existe publish associado a "+TRASH);
+                            //System.out.println("não existe publish associado a "+TRASH);
                         }
                     }
                     // alerts you when is borderline calls and agent catcher.
@@ -277,7 +277,7 @@ public class InformaService extends Service {
                         if(p != null){
                             p.publicar(context);
                         }else{
-                            System.out.println("não existe publish associado a "+GATHERING);
+                            //System.out.println("não existe publish associado a "+GATHERING);
                         }
                     }
                     

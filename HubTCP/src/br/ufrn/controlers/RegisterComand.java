@@ -33,7 +33,7 @@ public class RegisterComand extends TratarRequisicao {
             for (;;) {
                 input = new ObjectInputStream(socket.getInputStream());
 
-                System.out.println("RegisterComand tentando registrar topico");
+            //    //System.out.println("RegisterComand tentando registrar topico");
                 Mensagem mensagem = (Mensagem) input.readObject();
 
                 if (mensagem.getCodigo().equals(Mensagem.register)) {
@@ -41,9 +41,9 @@ public class RegisterComand extends TratarRequisicao {
 
                     if (subscribers.get(topico) == null) {
                         subscribers.put(topico, new HashMap<String, Socket>());
-                        System.out.println("registrando topico " + topico);
+                     //   //System.out.println("registrando topico " + topico);
                     } else {
-                        System.out.println("topico ja existe");
+                      //  //System.out.println("topico ja existe");
                     }
                 }
             }

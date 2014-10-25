@@ -31,7 +31,7 @@ public abstract class Register extends UnicastRemoteObject {
         java.rmi.registry.LocateRegistry.createRegistry(port);
         Naming.rebind(url, this);
 
-        System.out.println("Registro criado "+url);
+        //System.out.println("Registro criado "+url);
     }
 
     public int getPort() {

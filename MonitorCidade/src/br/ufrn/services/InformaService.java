@@ -107,7 +107,7 @@ public class InformaService {
         public void tratarMensagem(String mensagem) {
             String valoresP[] = mensagem.split(";");
 
-            System.out.println("indice de ruidos "+valoresP[2]+ Integer.parseInt(valoresP[3]));
+            //System.out.println("indice de ruidos "+valoresP[2]+ Integer.parseInt(valoresP[3]));
             
             if (valoresP[2].equals("NOISE_ON")) {
                 cidade.atualizaQuantidadeRuido(Integer.parseInt(valoresP[0]), valoresP[2], Integer.parseInt(valoresP[3]));
@@ -125,7 +125,7 @@ public class InformaService {
 
         @Override
         public void tratarMensagem(String mensagem) {
-            System.out.println(mensagem);
+           
             String valoresT[] = mensagem.split(";");
             cidade.atualizaTemperatura(Integer.parseInt(valoresT[0]), Integer.parseInt(valoresT[2]));
 
@@ -229,7 +229,7 @@ public class InformaService {
 //    public void execute() {
 //
 //        String functionName = serviceInput.getFunctionName();
-//        System.out.println("função " + functionName + "\n");
+//        //System.out.println("função " + functionName + "\n");
 //
 //        /**
 //         * POLLUTION FUNCTIONS
@@ -251,7 +251,7 @@ public class InformaService {
 //            if (p != null) {
 //                p.publicar(context);
 //            } else {
-//                System.out.println("não existe publish associado a " + POLLUTION);
+//                //System.out.println("não existe publish associado a " + POLLUTION);
 //            }
 //
 //        } //Will Rain
@@ -269,7 +269,7 @@ public class InformaService {
 //            if (p != null) {
 //                p.publicar(context);
 //            } else {
-//                System.out.println("não existe publish associado a " + WILL_RAIN);
+//                //System.out.println("não existe publish associado a " + WILL_RAIN);
 //            }
 //
 //        } //Acid Rain
@@ -289,7 +289,7 @@ public class InformaService {
 //            if (p != null) {
 //                p.publicar(context);
 //            } else {
-//                System.out.println("não existe publish associado a " + ACID_RAIN);
+//                //System.out.println("não existe publish associado a " + ACID_RAIN);
 //            }
 //        } //Noise
 //        else if (functionName.equals(NOISE)) {
@@ -306,7 +306,7 @@ public class InformaService {
 //            if (p != null) {
 //                p.publicar(context);
 //            } else {
-//                System.out.println("não existe publish associado a " + NOISE);
+//                //System.out.println("não existe publish associado a " + NOISE);
 //            }
 //        } /**
 //         * TEMPERATURE FUNCTIONS
@@ -322,7 +322,7 @@ public class InformaService {
 //            if (p != null) {
 //                p.publicar(context);
 //            } else {
-//                System.out.println("não existe publish associado a " + TEMPERATURE);
+//                //System.out.println("não existe publish associado a " + TEMPERATURE);
 //            }
 //        } // beautiful Weather
 //        else if (functionName.equals(BEAUTIFUL_WEATHER)) {
@@ -339,7 +339,7 @@ public class InformaService {
 //            if (p != null) {
 //                p.publicar(context);
 //            } else {
-//                System.out.println("não existe publish associado a " + BEAUTIFUL_WEATHER);
+//                //System.out.println("não existe publish associado a " + BEAUTIFUL_WEATHER);
 //            }
 //
 //        } //is fire?
@@ -357,7 +357,7 @@ public class InformaService {
 //            if (p != null) {
 //                p.publicar(context);
 //            } else {
-//                System.out.println("não existe publish associado a " + IS_FIRE);
+//                //System.out.println("não existe publish associado a " + IS_FIRE);
 //            }
 //        } // Hot and dry weather
 //        else if (functionName.equals(HOT_DRY)) {
@@ -374,7 +374,7 @@ public class InformaService {
 //            if (p != null) {
 //                p.publicar(context);
 //            } else {
-//                System.out.println("não existe publish associado a " + HOT_DRY);
+//                //System.out.println("não existe publish associado a " + HOT_DRY);
 //            }
 //
 //        } /**
@@ -397,7 +397,7 @@ public class InformaService {
 //            if (p != null) {
 //                p.publicar(context);
 //            } else {
-//                System.out.println("não existe publish associado a " + TRASH);
+//                //System.out.println("não existe publish associado a " + TRASH);
 //            }
 //        } // alerts you when is borderline calls and agent catcher.
 //        else if (functionName.equals(GATHERING)) {
@@ -416,7 +416,7 @@ public class InformaService {
 //            if (p != null) {
 //                p.publicar(context);
 //            } else {
-//                System.out.println("não existe publish associado a " + GATHERING);
+//                //System.out.println("não existe publish associado a " + GATHERING);
 //            }
 //        }
 //

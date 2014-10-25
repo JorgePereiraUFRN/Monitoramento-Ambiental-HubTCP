@@ -27,8 +27,8 @@ public class Publish {
     public Publish(String topico) {
         this.topico = topico;
         try {
-            socketRegister = new Socket("127.0.0.1", 2000);
-            socketPublish = new Socket("127.0.0.1", 2001);
+            socketRegister = new Socket("localhost", 2000);
+            socketPublish = new Socket("localhost", 2001);
         } catch (UnknownHostException ex) {
             Logger.getLogger(Publish.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -79,7 +79,7 @@ public class Publish {
         Scanner sc = new Scanner(System.in);
 
         for (;;) {
-            System.out.println("digite a atualização");
+            //System.out.println("digite a atualização");
             String t = sc.nextLine();
 
             publish.publicar(t);

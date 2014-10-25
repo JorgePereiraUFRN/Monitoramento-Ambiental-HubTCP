@@ -51,7 +51,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         if(atualizar != null){
             atualizar.atualizarIndicePoluicao(area, indexPolluition);
         }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
+            //System.out.println("não existe um pollution widget associado à area "+area);
         }
     }
 
@@ -61,8 +61,6 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         
         if(atualizar != null){
             atualizar.atualizarFluxoDeVeiculos(area, vehicleFlow);
-        }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
         }
     }
 
@@ -73,8 +71,6 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         
         if(atualizar != null){
             atualizar.atualizarVelociadeDoVento(area, windSpeed);
-        }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
         }
         
     }
@@ -85,8 +81,6 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         
         if(atualizar != null){
             atualizar.atualizardirecaoDoVento(area, directionWind);
-        }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
         }
         
     }
@@ -98,7 +92,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         if(atualizar != null){
             atualizar.atualizarProbalidadeChuva(area, willRain);
         }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
+            //System.out.println("não existe um pollution widget associado à area "+area);
         }
     }
 
@@ -109,7 +103,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         if(atualizar != null){
             atualizar.atualizarQuantidadeRuido(area, noise);
         }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
+            //System.out.println("não existe um pollution widget associado à area "+area);
         }
     }
 
@@ -122,7 +116,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         if(atualizar != null){
             atualizar.atualizarTemeperatura(area, temperature);
         }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
+            //System.out.println("não existe um pollution widget associado à area "+area);
         }
     }
 
@@ -133,7 +127,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         if(atualizar != null){
             atualizar.atualizarHumidade(area, humidity);
         }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
+            //System.out.println("não existe um pollution widget associado à area "+area);
         }
     }
 
@@ -144,7 +138,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         if(atualizar != null){
             atualizar.atualizarIncidenciaDeIncendio(area, isFire);
         }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
+            //System.out.println("não existe um pollution widget associado à area "+area);
         }
     }
 
@@ -157,7 +151,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         if(atualizar != null){
             atualizar.atualizarQuantidadeLixo(area, content);
         }else{
-            System.out.println("não existe um areawidget associado à area "+area);
+            //System.out.println("não existe um areawidget associado à area "+area);
         }
     }
 
@@ -168,7 +162,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         if(atualizar != null){
             atualizar.atualizarAgenteProximo(area, agentNearName);
         }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
+            //System.out.println("não existe um pollution widget associado à area "+area);
         }
     }
 
@@ -179,7 +173,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
         if(atualizar != null){
             atualizar.atualizaDistanciaAgente(area, agentDistance);
         }else{
-            System.out.println("não existe um pollution widget associado à area "+area);
+            //System.out.println("não existe um pollution widget associado à area "+area);
         }
     }
    

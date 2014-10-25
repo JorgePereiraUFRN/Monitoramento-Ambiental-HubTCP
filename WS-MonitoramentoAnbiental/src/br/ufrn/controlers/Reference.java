@@ -29,7 +29,7 @@ public class Reference {
 
 			try {
 				atualizarWidgetsRMI = (AtualizarWidgetsRMI) Naming.lookup(url);
-				System.out.println("Referencia recuperada");
+				//System.out.println("Referencia recuperada");
 
 			} catch (NotBoundException ex) {
 				Logger.getLogger(Reference.class.getName()).log(Level.SEVERE,

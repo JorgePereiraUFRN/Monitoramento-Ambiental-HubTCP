@@ -27,15 +27,15 @@ public class EsperarAtualizacoes extends Thread{
     
     @Override
     public void run(){
-        System.out.println("aguardando atualizações");
+        
         for(;;){
             try {
                 input = new ObjectInputStream(socket.getInputStream());
                 String mensagem = (String) input.readObject();
                 tratarMensagem.tratarMensagem(mensagem);
-                System.out.println(mensagem);
+                
 //                Date data = new Date(System.currentTimeMillis());
-//                System.out.println("mensagem recebida: "+mensagem+"\n"+data);
+//                //System.out.println("mensagem recebida: "+mensagem+"\n"+data);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(EsperarAtualizacoes.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {

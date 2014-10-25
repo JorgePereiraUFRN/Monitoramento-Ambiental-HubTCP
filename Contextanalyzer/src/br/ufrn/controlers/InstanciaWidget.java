@@ -32,7 +32,7 @@ public class InstanciaWidget {
     public InstanciaWidget(){
     	Discoverer.start();
         
-        System.out.println("Inicializando componentes...");
+        //System.out.println("Inicializando componentes...");
        
         ma1 = new MonitoramentoArea(1);
         ma2 = new MonitoramentoArea(2);
@@ -46,7 +46,7 @@ public class InstanciaWidget {
         atualizador.AddAtualizadoresWidgets(3, ma3);
         atualizador.AddAtualizadoresWidgets(4, ma4);
         
-        System.out.println("Componentes inicializados com sucesso!");
+        //System.out.println("Componentes inicializados com sucesso!");
         
     }
     
