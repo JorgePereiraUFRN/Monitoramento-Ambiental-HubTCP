@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -46,12 +47,14 @@ public class SimulacaoSubsicribers {
 				
 			}
 		};
+		
+		subscriber.subscribe();
 	}
 		
 	
 	public void teste3(){
 		
-		ExecutorService executor = Executors.newCachedThreadPool();
+		
 		
 		int numeroSubscribers = 200;
 		AtomicInteger cont = new AtomicInteger(0);
@@ -79,10 +82,23 @@ public class SimulacaoSubsicribers {
 				}
 			};
 			
+			subscriber.subscribe();
+			
 		}
 		
 	}
 	
 
+	public static void main(String args[]) throws MalformedURLException, RemoteException, NotBoundException{
+		
+		SimulacaoSubsicribers simulacao = new SimulacaoSubsicribers();
+		
+		simulacao.teste1();
+		
+		Scanner s = new Scanner(System.in);
+		
+		System.out.println("Digite algo pra terminar a aplicação");
+		String algo = s.nextLine();
+	}
 
 }

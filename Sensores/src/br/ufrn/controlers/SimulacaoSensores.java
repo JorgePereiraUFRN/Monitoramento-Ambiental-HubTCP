@@ -167,7 +167,9 @@ public class SimulacaoSensores {
 		
 		SimulacaoSensores simulacao = new SimulacaoSensores();
 		
-		simulacao.teste2();
+		simulacao.teste1();
+		
+		//simulacao.teste2();
 
 	}
 
