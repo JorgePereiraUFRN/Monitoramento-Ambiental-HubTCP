@@ -27,8 +27,8 @@ public class Publish {
     public Publish(String topico) {
         this.topico = topico;
         try {
-            socketRegister = new Socket("172.31.18.206", 2000);
-            socketPublish = new Socket("172.31.18.206", 2001);
+            socketRegister = new Socket("127.0.0.1", 2000);//172.31.18.206
+            socketPublish = new Socket("127.0.0.1", 2001);//172.31.18.206
         } catch (UnknownHostException ex) {
             Logger.getLogger(Publish.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

@@ -232,6 +232,7 @@ public class InformaService extends Service {
                         Publish p = publishs.get(IS_FIRE);
                         if(p != null){
                             p.publicar(context);
+                            
                         }else{
                             //System.out.println("não existe publish associado a "+IS_FIRE);
                         }

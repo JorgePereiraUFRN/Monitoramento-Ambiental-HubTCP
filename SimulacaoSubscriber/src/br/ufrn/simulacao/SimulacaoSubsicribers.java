@@ -19,6 +19,7 @@ public class SimulacaoSubsicribers {
 	private ServidorHoras servidorHoras;
 
 	private String portNum = "8000";
+	volatile AtomicInteger cont = new AtomicInteger(0);
 	//private int contthread = 0;
 	
 	private SimulacaoSubsicribers() throws MalformedURLException,
@@ -43,8 +44,8 @@ public class SimulacaoSubsicribers {
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
 				
+				}
 			}
 		};
 		
@@ -54,10 +55,8 @@ public class SimulacaoSubsicribers {
 	
 	public void teste3(){
 		
-		
-		
 		int numeroSubscribers = 200;
-		AtomicInteger cont = new AtomicInteger(0);
+		
 		
 		for(int i = 0; i < numeroSubscribers; i++){
 			
@@ -66,12 +65,16 @@ public class SimulacaoSubsicribers {
 				@Override
 				public void tratarMensagem(String mensagem) {
 					
-					if ( cont.incrementAndGet() == numeroSubscribers){
+					if ( cont.incrementAndGet() == numeroSubscribers ){
 						
 						try {
 							long hora = servidorHoras.getHora();
 							
-							System.out.println("Hora teste 3 - subscriber: "+hora);
+							System.out.println("Hora teste 3 - subscriber: "+hora+"\n"+cont.get());
+
+							cont.set(0);
+							
+					
 						} catch (RemoteException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -93,7 +96,7 @@ public class SimulacaoSubsicribers {
 		
 		SimulacaoSubsicribers simulacao = new SimulacaoSubsicribers();
 		
-		simulacao.teste1();
+		simulacao.teste3();
 		
 		Scanner s = new Scanner(System.in);
 		

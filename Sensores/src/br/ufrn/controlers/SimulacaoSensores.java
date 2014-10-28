@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import br.ufrn.ServidorDeHoras.ServidorHoras;
 
@@ -14,7 +15,7 @@ public class SimulacaoSensores {
 
 	private AtualizarInformacoesDeContexto atualizar;
 
-	private String hostName = "localhost";
+	private String hostName = "localhost";//192.168.1.5
 	private ServidorHoras servidorHoras;
 
 	private String portNum = "8000";
@@ -30,9 +31,9 @@ public class SimulacaoSensores {
 
 	}
 
-	public void teste1() throws RemoteException {
+	public void teste1(int area, int fire) throws RemoteException {
 
-		atualizar.atualizarIncidenciaDeIncendio(1, 1);
+		atualizar.atualizarIncidenciaDeIncendio(area, fire);
 		long hora = servidorHoras.getHora();
 
 		System.out.println("Teste 1 - Sensor - hora: " + hora);
@@ -83,7 +84,7 @@ public class SimulacaoSensores {
 			atualizar.atualizarVelociadeDoVento(area, r.nextInt(60));
 
 		case 14:
-			atualizar.atualizarIncidenciaDeIncendio(area, r.nextInt(1));
+			atualizar.atualizarIncidenciaDeIncendio(area, 0);
 
 		default:
 			break;
@@ -125,6 +126,8 @@ public class SimulacaoSensores {
 		}
 		
 		
+	
+		
 
 	}
 
@@ -132,6 +135,7 @@ public class SimulacaoSensores {
 		ExecutorService executor = Executors.newCachedThreadPool();
 
 		long inicio = System.currentTimeMillis();
+		AtomicInteger cont  = new AtomicInteger(0);
 		
 		for (int i = 0; i < 1005; i++) {
 			
@@ -150,24 +154,54 @@ public class SimulacaoSensores {
 				public void run() {
 
 					enviarDado(new Random().nextInt(13));
+					cont.incrementAndGet();
 
 				}
 			});
 		}
 		
+		new Thread(new Runnable() {
+			public void run() {
+				
+				if(cont.get() >= 999){
+					
+					try {
+						atualizar.atualizarIncidenciaDeIncendio(1, 1);
+						long hora;
+						hora = servidorHoras.getHora();
+						System.out.println("tempo de execução das threads :"+ (System.currentTimeMillis() -  inicio));
+						System.out.println("hora teste 3 - Sensor :"+hora);
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
-		atualizar.atualizarIncidenciaDeIncendio(1, 1);
-		long hora = servidorHoras.getHora();
+				}else{
+					try {
+						Thread.sleep(5);
+						this.run();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			}
+		}).start();;
 
-		System.out.println("hora teste 3 - Sensor :"+hora);
-
+		
 	}
 
 	public static void main(String args[]) throws MalformedURLException, RemoteException, NotBoundException {
 		
 		SimulacaoSensores simulacao = new SimulacaoSensores();
-		
-		simulacao.teste1();
+	
+		/*
+		simulacao.teste1(2,0);
+		simulacao.teste1(3,0);
+		simulacao.teste1(4,0);*/
+	
+		simulacao.teste3();
 		
 		//simulacao.teste2();
 

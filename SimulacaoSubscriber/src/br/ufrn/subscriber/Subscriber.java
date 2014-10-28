@@ -27,8 +27,8 @@ public abstract class Subscriber extends TratarMensagem{
     public Subscriber(String topico) {
         this.topico = topico;
         try {
-            socketSubscriber = new Socket("127.0.0.1", 2002);
-            socketUnbscriber = new Socket("127.0.0.1", 2003);
+            socketSubscriber = new Socket("localhost", 2002);//54.94.145.201
+            socketUnbscriber = new Socket("localhost", 2003);//54.94.145.201
         } catch (UnknownHostException ex) {
             Logger.getLogger(Subscriber.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
