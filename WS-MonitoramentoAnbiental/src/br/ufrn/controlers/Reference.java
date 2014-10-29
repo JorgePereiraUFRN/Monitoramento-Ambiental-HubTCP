@@ -17,18 +17,18 @@ import java.util.logging.Logger;
  */
 public class Reference {
 
-	private static AtualizarWidgetsRMI atualizarWidgetsRMI = null;
+	private static UpdateDatas atualizarWidgetsRMI = null;
 
 	private Reference() {
 
 	}
 
-	public static synchronized AtualizarWidgetsRMI getReference(String url) {
+	public static synchronized UpdateDatas getReference(String url) {
 
 		if (atualizarWidgetsRMI == null) {
 
 			try {
-				atualizarWidgetsRMI = (AtualizarWidgetsRMI) Naming.lookup(url);
+				atualizarWidgetsRMI = (UpdateDatas) Naming.lookup(url);
 				//System.out.println("Referencia recuperada");
 
 			} catch (NotBoundException ex) {

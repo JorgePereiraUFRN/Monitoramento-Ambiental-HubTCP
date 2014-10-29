@@ -4,7 +4,7 @@
  */
 package br.ufrn.WebService;
 
-import br.ufrn.controlers.AtualizarWidgetsRMI;
+import br.ufrn.controlers.UpdateDatas;
 import br.ufrn.controlers.Reference;
 import java.rmi.RemoteException;
 import javax.activation.MimeType;
@@ -32,7 +32,7 @@ public class WebServiceMonitoramentoAmbiental {
 //    
 //    private MonitorCidade monitorCidade = MonitorCidade.getInstance();
 
-    private AtualizarWidgetsRMI atualizarWidgets = Reference.getReference("rmi://localhost:1029/Monitoramento");
+    private UpdateDatas atualizarWidgets = Reference.getReference("rmi://localhost:1029/Monitoramento");
     /**
      * Creates a new instance of WebServiceMonitoramentoAmbiental
      */

@@ -12,7 +12,7 @@ import javax.ws.rs.PathParam;
  *
  * @author Jorge
  */
-public interface AtualizarWidgetsRMI extends Remote{
+public interface UpdateDatas extends Remote{
 
     //=====PollutionWidget=====
     public void atualizarIndicePoluicao(Integer area, Integer indexPolluition) throws RemoteException;
