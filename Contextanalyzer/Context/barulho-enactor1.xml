@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="barulho-enactor1">
+
+	<InWidget  href="barulho-widget1.xml" />
+	<OutWidget href="output-widget.xml" />
+	
+	<OutcomeName>area</OutcomeName>
+
+	
+	<Reference name="noiseOn">
+		<Query name="noiseOn">
+			(
+				GREATER noise 55
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"noiseMonitor;"+"NOISE_ON;"+noise</Outcome>
+		<ServiceInput service="informaService" function="noiseMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference> 
+        
+        <Reference name="noiseOff">
+		<Query name="noiseOff">
+			(ELSE
+				(QUERY noiseOn)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"noiseMonitor;"+"NOISE_OFF;"+noise</Outcome>
+		<ServiceInput service="informaService" function="noiseMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference> 
+        
+ 
+        
+</Enactor>

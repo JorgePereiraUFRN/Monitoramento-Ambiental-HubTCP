@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Widget xmlns="http://www.contexttoolkit.org/ctk" name="fogo-widget">		
+<Widget xmlns="http://www.contexttoolkit.org/ctk" name="fogo-widget3">		
 	<Attributes>
 		
 		<Attribute name="isFire" type="int"/>

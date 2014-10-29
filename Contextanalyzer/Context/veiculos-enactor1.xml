@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="veiculos-enactor">
+<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="veiculos-enactor1">
 
-	<InWidget  href="veiculos-widget.xml" />
+	<InWidget  href="veiculos-widget1.xml" />
 	<OutWidget href="output-widget.xml" />
 	
 	<OutcomeName>area</OutcomeName>
@@ -12,8 +12,8 @@
 				(GREATER vehicleFlow 60)
 			)
 		</Query>
-		<Outcome outAttribute="area">area+";"+"pollutionMonitor;"+"TRAFEGO_ON"</Outcome>
-		<ServiceInput service="informaService" function="pollutionMonitor">
+		<Outcome outAttribute="area">area+";"+"vehicleFlowMonitor"+"TRAFEGO_ON"</Outcome>
+		<ServiceInput service="informaService" function="vehicleFlow">
 			<Attribute name="area" />
 		</ServiceInput>
 	</Reference> 
@@ -24,8 +24,8 @@
 				(QUERY trafficFlowOn)
 			)
 		</Query>
-		<Outcome outAttribute="area">area+";"+"pollutionMonitor;"+"TRAFEGO_OFF"</Outcome>
-		<ServiceInput service="informaService" function="pollutionMonitor">
+		<Outcome outAttribute="area">area+";"+"vehicleFlowMonitor;"+"TRAFEGO_OFF"</Outcome>
+		<ServiceInput service="informaService" function="vehicleFlow">
 			<Attribute name="area" />
 		</ServiceInput>
 	</Reference> 

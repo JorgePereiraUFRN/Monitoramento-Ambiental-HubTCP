@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="fogo-enactor">
+<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="fogo-enactor3">
 
-	<InWidget  href="fogo-widget.xml" />
+	<InWidget  href="fogo-widget3.xml" />
 	<OutWidget href="output-widget.xml" />
 	
 	<OutcomeName>area</OutcomeName>

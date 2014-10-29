@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Widget xmlns="http://www.contexttoolkit.org/ctk" name="tempo-widget4">		
+	<Attributes>
+		<Attribute name="indexPollution" type="int"/>			
+		 
+        <Attribute name="directionWind" type="string"/>
+		<Attribute name="willRain" type="int"/>
+     
+         <Attribute name="temperature" type="int"/>
+		<Attribute name="humidity" type="int"/>
+		<Attribute name="windSpeed" type="int"/>
+		
+		<Attribute name="area" type="int"/>
+                
+	</Attributes>	
+</Widget>

@@ -32,6 +32,7 @@ public class InformaService extends Service {
     public static final String HOT_DRY = "hotDryMonitor";
     public static final String TRASH = "trashMonitor";
     public static final String GATHERING = "trashGathering";
+    public static final String VEHICLE_FLOW= "vehicleFlow";
     
     
     private HashMap<String, Publish> publishs = new HashMap<String, Publish>();
@@ -48,6 +49,7 @@ public class InformaService extends Service {
         publishs.put(HOT_DRY, new Publish(HOT_DRY));
         publishs.put(TRASH, new Publish(TRASH));
         publishs.put(GATHERING, new Publish(GATHERING));
+        publishs.put(VEHICLE_FLOW, new Publish(VEHICLE_FLOW));
         
         Iterator<Publish> pIterator = publishs.values().iterator();
         
@@ -118,6 +120,11 @@ public class InformaService extends Service {
                                                     "chama um agente de coleta mais próximo.",
                                                     widget.getNonConstantAttributes(),
                                                     FunctionDescription.FUNCTION_SYNC));
+                                   add(new FunctionDescription(
+                                           VEHICLE_FLOW,
+                                           "alerta sobre o fluxo de veiculos.",
+                                           widget.getNonConstantAttributes(),
+                                           FunctionDescription.FUNCTION_SYNC));
                             }
                     });
                     
@@ -275,6 +282,18 @@ public class InformaService extends Service {
                        
                         //Publisher excession
                         Publish p = publishs.get(GATHERING);
+                        if(p != null){
+                            p.publicar(context);
+                        }else{
+                            //System.out.println("não existe publish associado a "+GATHERING);
+                        }
+                    }
+                    
+                    else if (functionName.equals(VEHICLE_FLOW)) {
+                        String context = serviceInput.getInput().getAttributeValue("area");
+                       
+                        //Publisher excession
+                        Publish p = publishs.get(VEHICLE_FLOW);
                         if(p != null){
                             p.publicar(context);
                         }else{

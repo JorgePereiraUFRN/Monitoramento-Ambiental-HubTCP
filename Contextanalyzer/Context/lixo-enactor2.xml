@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="lixo-enactor">
+<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="lixo-enactor2">
 
-	<InWidget  href="lixo-widget.xml" />
+	<InWidget  href="lixo-widget2.xml" />
 	<OutWidget href="output-widget.xml" />
 	
 	<OutcomeName>area</OutcomeName>

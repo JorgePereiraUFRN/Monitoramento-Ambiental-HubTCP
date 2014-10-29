@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Enactor xmlns="http://www.contexttoolkit.org/ctk" name="fogo-enactor1">
+
+	<InWidget  href="fogo-widget1.xml" />
+	<OutWidget href="output-widget.xml" />
+	
+	<OutcomeName>area</OutcomeName>
+
+	
+	<Reference name="fireOn">
+		<Query name="fireOn">
+			(
+				EQUAL isFire 1
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"isFireMonitor;"+"FIRE_ON"</Outcome>
+		<ServiceInput service="informaService" function="isFireMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+        
+        <Reference name="fireOff">
+		<Query name="fireOff">
+			(ELSE
+				(QUERY fireOn)
+			)
+		</Query>
+		<Outcome outAttribute="area">area+";"+"isFireMonitor;"+"FIRE_OFF"</Outcome>
+		<ServiceInput service="informaService" function="isFireMonitor">
+			<Attribute name="area" />
+		</ServiceInput>
+	</Reference>
+		
+	
+
+</Enactor>

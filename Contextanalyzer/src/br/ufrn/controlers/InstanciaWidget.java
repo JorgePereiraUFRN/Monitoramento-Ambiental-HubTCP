@@ -47,7 +47,7 @@ public class InstanciaWidget {
         atualizador.AddAtualizadoresWidgets(3, ma3);
         atualizador.AddAtualizadoresWidgets(4, ma4);
         
-        System.out.println("Componentes inicializados com sucesso!");
+        System.out.println("Componentes inicializados!");
         
     }
     

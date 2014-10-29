@@ -37,24 +37,23 @@ public class UpdaterWidget implements UpdateDatas {
 
     public UpdaterWidget(Integer area) {
 
-        noise = WidgetXmlParser.createWidget("Context/barulho-widget.xml");  //area"+area+"/
+        noise = WidgetXmlParser.createWidget("Context/barulho-widget"+area+".xml");  //area"+area+"/
         
         noise.updateData("area", area);
         noise.updateData("noise", -100);
         
-        fire = WidgetXmlParser.createWidget("Context/fogo-widget.xml");
-        fire.setId(fire.getId()+area);
+        fire = WidgetXmlParser.createWidget("Context/fogo-widget"+area+".xml");
         fire.updateData("area", area);
         fire.updateData("isFire", 0);
         
-        trash = WidgetXmlParser.createWidget("Context/lixo-widget.xml");
+        trash = WidgetXmlParser.createWidget("Context/lixo-widget"+area+".xml");
         
         trash.updateData("area", area);
         trash.updateData("content", -100);
         trash.updateData("agentNearName", "agente 1");
         trash.updateData("agentDistance", -100);
         
-        weather = WidgetXmlParser.createWidget("Context/tempo-widget.xml");
+        weather = WidgetXmlParser.createWidget("Context/tempo-widget"+area+".xml");
         weather.updateData("area", area);  
         weather.updateData("indexPollution", -100);
         weather.updateData("directionWind", "norte");
@@ -63,17 +62,17 @@ public class UpdaterWidget implements UpdateDatas {
         weather.updateData("humidity", -100);
         weather.updateData("windSpeed", -100);
         
-        vehicles = WidgetXmlParser.createWidget("Context/veiculos-widget.xml");
+        vehicles = WidgetXmlParser.createWidget("Context/veiculos-widget"+area+".xml");
         vehicles.updateData("area", area);  
         vehicles.updateData("vehicleFlow", -100);
 
     
         //Enactors
-        noiseEnactor = EnactorXmlParser.createEnactor("Context/barulho-enactor.xml");
-        fireEnactor = EnactorXmlParser.createEnactor("Context/fogo-enactor.xml");
-        trashEnactor = EnactorXmlParser.createEnactor("Context/lixo-enactor.xml");
-        weatherEnactor = EnactorXmlParser.createEnactor("Context/tempo-enactor.xml");
-        vehiclesEnactor = EnactorXmlParser.createEnactor("Context/veiculos-enactor.xml");
+        noiseEnactor = EnactorXmlParser.createEnactor("Context/barulho-enactor"+area+".xml");
+        fireEnactor = EnactorXmlParser.createEnactor("Context/fogo-enactor"+area+".xml");
+        trashEnactor = EnactorXmlParser.createEnactor("Context/lixo-enactor"+area+".xml");
+        weatherEnactor = EnactorXmlParser.createEnactor("Context/tempo-enactor"+area+".xml");
+        vehiclesEnactor = EnactorXmlParser.createEnactor("Context/veiculos-enactor"+area+".xml");
 
 
     }
