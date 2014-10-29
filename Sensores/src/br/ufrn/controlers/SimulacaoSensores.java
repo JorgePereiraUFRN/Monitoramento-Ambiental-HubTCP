@@ -66,7 +66,6 @@ public class SimulacaoSensores {
 		case 7:
 			atualizar.atualizarProbalidadeChuva(area, r.nextInt(100));
 			break;
-
 		case 8:
 			atualizar.atualizarQuantidadeLixo(area, r.nextInt(100));
 			break;
@@ -78,13 +77,16 @@ public class SimulacaoSensores {
 			break;
 		case 11:
 			atualizar.atualizarQuantidadeRuido(area, r.nextInt(70));
+			break;
 		case 12:
 			atualizar.atualizarTemeperatura(area, r.nextInt(100));
+			break;
 		case 13:
 			atualizar.atualizarVelociadeDoVento(area, r.nextInt(60));
-
+			break;
 		case 14:
 			atualizar.atualizarIncidenciaDeIncendio(area, 0);
+			break;
 
 		default:
 			break;
@@ -163,12 +165,20 @@ public class SimulacaoSensores {
 		new Thread(new Runnable() {
 			public void run() {
 				
-				if(cont.get() >= 999){
+				
+				while(cont.get() < 999){
+					try {
+						Thread.sleep(10);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
 					
 					try {
-						atualizar.atualizarIncidenciaDeIncendio(1, 1);
 						long hora;
 						hora = servidorHoras.getHora();
+						atualizar.atualizarIncidenciaDeIncendio(1, 1);
 						System.out.println("tempo de execução das threads :"+ (System.currentTimeMillis() -  inicio));
 						System.out.println("hora teste 3 - Sensor :"+hora);
 					} catch (RemoteException e) {
@@ -176,18 +186,10 @@ public class SimulacaoSensores {
 						e.printStackTrace();
 					}
 
-				}else{
-					try {
-						Thread.sleep(5);
-						this.run();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
+				
 				
 			}
-		}).start();;
+		}).start();
 
 		
 	}
@@ -196,10 +198,9 @@ public class SimulacaoSensores {
 		
 		SimulacaoSensores simulacao = new SimulacaoSensores();
 	
-		/*
-		simulacao.teste1(2,0);
-		simulacao.teste1(3,0);
-		simulacao.teste1(4,0);*/
+		
+		//simulacao.teste1(2,0);
+		
 	
 		simulacao.teste3();
 		

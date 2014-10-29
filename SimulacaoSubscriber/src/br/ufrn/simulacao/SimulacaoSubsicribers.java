@@ -40,7 +40,7 @@ public class SimulacaoSubsicribers {
 				try {
 					long hora = servidorHoras.getHora();
 					
-					System.out.println("Hora teste 1 - subscriber: "+hora);
+					System.out.println("Hora teste 1 - subscriber: "+hora+"\n"+mensagem);
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -73,8 +73,7 @@ public class SimulacaoSubsicribers {
 							System.out.println("Hora teste 3 - subscriber: "+hora+"\n"+cont.get());
 
 							cont.set(0);
-							
-					
+								
 						} catch (RemoteException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -96,7 +95,7 @@ public class SimulacaoSubsicribers {
 		
 		SimulacaoSubsicribers simulacao = new SimulacaoSubsicribers();
 		
-		simulacao.teste3();
+		simulacao.teste1();
 		
 		Scanner s = new Scanner(System.in);
 		

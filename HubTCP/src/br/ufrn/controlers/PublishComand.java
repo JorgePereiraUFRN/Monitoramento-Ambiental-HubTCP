@@ -56,6 +56,7 @@ public class PublishComand extends TratarRequisicao {
 
 	private void enviarAtualizacao(Iterator<Socket> sockets, String atualizacao) {
 
+		
 		while (sockets.hasNext()) {
 			ObjectOutputStream output = null;
 			try {
