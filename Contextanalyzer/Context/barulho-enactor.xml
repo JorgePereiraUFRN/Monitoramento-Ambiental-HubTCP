@@ -2,7 +2,7 @@
 <Enactor xmlns="http://www.contexttoolkit.org/ctk" name="barulho-enactor">
 
 	<InWidget  href="barulho-widget.xml" />
-	<OutWidget href="Context/output-widget.xml" />
+	<OutWidget href="output-widget.xml" />
 	
 	<OutcomeName>area</OutcomeName>
 

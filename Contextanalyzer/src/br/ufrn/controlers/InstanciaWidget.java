@@ -4,17 +4,17 @@
  */
 package br.ufrn.controlers;
 
-import br.ufrn.services.MonitoramentoArea;
+import br.ufrn.services.UpdaterWidget;
 import br.ufrn.services.ServiceOutput;
 import context.arch.discoverer.Discoverer;
 
 
 public class InstanciaWidget {
     
-    private final MonitoramentoArea ma1;
-    private final MonitoramentoArea ma2;
-    private final MonitoramentoArea ma3;
-    private final MonitoramentoArea ma4;
+    private final UpdaterWidget ma1;
+    private final UpdaterWidget ma2;
+    private final UpdaterWidget ma3;
+    private final UpdaterWidget ma4;
    
       
     private static InstanciaWidget INSTANCIA_WIDGET;
@@ -27,17 +27,18 @@ public class InstanciaWidget {
         return INSTANCIA_WIDGET;
     }
     
-    AddAtualizadores atualizador = ConcreteAtualizarWidgets.getInstance();
+    AddUpdaters atualizador = UpdateDatasImpl.getInstance();
     
     public InstanciaWidget(){
+    	
     	Discoverer.start();
         
         //System.out.println("Inicializando componentes...");
        
-        ma1 = new MonitoramentoArea(1);
-        ma2 = new MonitoramentoArea(2);
-        ma3 = new MonitoramentoArea(3);
-        ma4 = new MonitoramentoArea(4);
+        ma1 = new UpdaterWidget(1);
+        ma2 = new UpdaterWidget(2);
+        ma3 = new UpdaterWidget(3);
+        ma4 = new UpdaterWidget(4);
         
         new ServiceOutput();
        
@@ -46,7 +47,7 @@ public class InstanciaWidget {
         atualizador.AddAtualizadoresWidgets(3, ma3);
         atualizador.AddAtualizadoresWidgets(4, ma4);
         
-        //System.out.println("Componentes inicializados com sucesso!");
+        System.out.println("Componentes inicializados com sucesso!");
         
     }
     

@@ -1,6 +1,6 @@
 package br.ufrn.controlers;
 
-import br.ufrn.services.MonitoramentoArea;
+import br.ufrn.services.UpdaterWidget;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.HashMap;
@@ -11,33 +11,33 @@ import java.util.logging.Logger;
  *
  * @author Jorge
  */
-public class ConcreteAtualizarWidgets extends Register implements AtualizarWidgetsRMI, AddAtualizadores{
+public class UpdateDatasImpl extends Register implements UpdateDatas, AddUpdaters{
     
-   private HashMap<Integer, AtualizarWidgetsRMI> areaWdgets = new HashMap<Integer, AtualizarWidgetsRMI>();
+   private HashMap<Integer, UpdateDatas> areaWdgets = new HashMap<Integer, UpdateDatas>();
    
-   private static ConcreteAtualizarWidgets atualizarWidgets;
+   private static UpdateDatasImpl atualizarWidgets;
    
    private static Integer port = 1029;
    public static String address = "rmi://localhost:"+port.toString()+"/Monitoramento";
    
-   public static ConcreteAtualizarWidgets getInstance(){
+   public static synchronized UpdateDatasImpl getInstance(){
        
        if(atualizarWidgets == null){
            try {
-               atualizarWidgets = new ConcreteAtualizarWidgets();
+               atualizarWidgets = new UpdateDatasImpl();
            } catch (RemoteException ex) {
-               Logger.getLogger(ConcreteAtualizarWidgets.class.getName()).log(Level.SEVERE, null, ex);
+               Logger.getLogger(UpdateDatasImpl.class.getName()).log(Level.SEVERE, null, ex);
            }
        }
        return atualizarWidgets;
    }
    
-   public ConcreteAtualizarWidgets() throws RemoteException {
+   private UpdateDatasImpl() throws RemoteException {
        super(address, port);
         try {
             super.register();
         } catch (MalformedURLException ex) {
-            Logger.getLogger(ConcreteAtualizarWidgets.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UpdateDatasImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -46,7 +46,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
    @Override
     public void atualizarIndicePoluicao(Integer area, Integer indexPolluition) throws RemoteException {
         
-        AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+        UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizarIndicePoluicao(area, indexPolluition);
@@ -57,7 +57,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
 
    @Override
     public void atualizarFluxoDeVeiculos(Integer area, Integer vehicleFlow) throws RemoteException {
-         AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+         UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizarFluxoDeVeiculos(area, vehicleFlow);
@@ -67,7 +67,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
      //este metodo deve atualizar o PollutionWidget e o TemperatureWidget
    @Override
     public void atualizarVelociadeDoVento(Integer area, Integer windSpeed) throws RemoteException {
-        AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+        UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizarVelociadeDoVento(area, windSpeed);
@@ -77,7 +77,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
 
    @Override
     public void atualizardirecaoDoVento(Integer area, String directionWind) throws RemoteException {
-       AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+       UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizardirecaoDoVento(area, directionWind);
@@ -87,7 +87,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
 
    @Override
     public void atualizarProbalidadeChuva(Integer area, Integer willRain) throws RemoteException{
-       AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+       UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizarProbalidadeChuva(area, willRain);
@@ -98,7 +98,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
 
    @Override
     public void atualizarQuantidadeRuido(Integer area, Integer noise) throws RemoteException {
-        AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+        UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizarQuantidadeRuido(area, noise);
@@ -111,7 +111,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
     
    @Override
     public void atualizarTemeperatura(Integer area, Integer temperature) throws RemoteException {
-        AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+        UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizarTemeperatura(area, temperature);
@@ -122,7 +122,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
 
    @Override
     public void atualizarHumidade(Integer area, Integer humidity) throws RemoteException{
-      AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+      UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizarHumidade(area, humidity);
@@ -133,10 +133,11 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
 
    @Override
     public void atualizarIncidenciaDeIncendio(Integer area, Integer isFire) throws RemoteException {
-       AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+       UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizarIncidenciaDeIncendio(area, isFire);
+
         }else{
             //System.out.println("não existe um pollution widget associado à area "+area);
         }
@@ -146,7 +147,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
     
    @Override
     public void atualizarQuantidadeLixo(Integer area, Integer content) throws RemoteException {
-        AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+        UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizarQuantidadeLixo(area, content);
@@ -157,7 +158,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
 
    @Override
     public void atualizarAgenteProximo(Integer area, String agentNearName) throws RemoteException {
-      AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+      UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizarAgenteProximo(area, agentNearName);
@@ -168,7 +169,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
 
     @Override
     public void atualizaDistanciaAgente(Integer area, Integer agentDistance) throws RemoteException {
-        AtualizarWidgetsRMI atualizar = areaWdgets.get(area);
+        UpdateDatas atualizar = areaWdgets.get(area);
         
         if(atualizar != null){
             atualizar.atualizaDistanciaAgente(area, agentDistance);
@@ -178,7 +179,7 @@ public class ConcreteAtualizarWidgets extends Register implements AtualizarWidge
     }
    
    @Override
-    public void AddAtualizadoresWidgets(Integer area, AtualizarWidgetsRMI atualizarWidgetsArea) {
+    public void AddAtualizadoresWidgets(Integer area, UpdateDatas atualizarWidgetsArea) {
         
         areaWdgets.put(area, atualizarWidgetsArea);
         

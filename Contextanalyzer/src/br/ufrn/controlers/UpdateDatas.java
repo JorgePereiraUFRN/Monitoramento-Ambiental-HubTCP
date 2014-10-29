@@ -4,6 +4,7 @@
  */
 package br.ufrn.controlers;
 
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -12,7 +13,7 @@ import java.rmi.RemoteException;
  *
  * @author Jorge
  */
-public interface AtualizarWidgetsRMI extends Remote{
+public interface UpdateDatas extends Remote{
 
     //=====PollutionWidget=====
     public void atualizarIndicePoluicao(Integer area, Integer indexPolluition) throws RemoteException;

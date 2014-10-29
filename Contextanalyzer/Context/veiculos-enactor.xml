@@ -2,7 +2,7 @@
 <Enactor xmlns="http://www.contexttoolkit.org/ctk" name="veiculos-enactor">
 
 	<InWidget  href="veiculos-widget.xml" />
-	<OutWidget href="Context/output-widget.xml" />
+	<OutWidget href="output-widget.xml" />
 	
 	<OutcomeName>area</OutcomeName>
 	

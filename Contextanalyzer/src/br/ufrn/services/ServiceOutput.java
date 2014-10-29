@@ -13,15 +13,15 @@ import context.arch.widget.WidgetXmlParser;
  */
 public class ServiceOutput {
     
-    private Widget informaOUT;
+    private Widget outputWidget;
     private InformaService informaService;
 
     public ServiceOutput() {
         //OUT Widgets and Service
-        informaOUT = WidgetXmlParser.createWidget("Informa/informa-widget-output.xml");
+        outputWidget = WidgetXmlParser.createWidget("Context/output-widget.xml");
 
-        informaService = new InformaService(informaOUT/*, monitor*/);
-        informaOUT.addService(informaService);
+        informaService = new InformaService(outputWidget/*, monitor*/);
+        outputWidget.addService(informaService);
         
     }
     
