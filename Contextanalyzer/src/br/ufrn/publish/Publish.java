@@ -22,7 +22,7 @@ public class Publish {
     private Socket socketPublish;
     private Socket socketRegister;
     private String topico;
-    private String oldmessage = "";
+  
 
     public Publish(String topico) {
         this.topico = topico;
@@ -54,14 +54,14 @@ public class Publish {
 
     public void publicar(String notificacao) {
         try {
-            if (!oldmessage.equals(notificacao)) {
+            
                 ObjectOutputStream output = new ObjectOutputStream(socketPublish.getOutputStream());
                 Mensagem mensagem = new Mensagem();
                 mensagem.setCodigo(Mensagem.publish);
                 mensagem.setValorMensagem(topico + "%" + notificacao);
 
                 output.writeObject(mensagem);
-            }
+            
 
         } catch (UnknownHostException ex) {
             Logger.getLogger(Publish.class.getName()).log(Level.SEVERE, null, ex);
